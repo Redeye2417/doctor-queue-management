@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 function AppointmentForm() {
   const [doctors, setDoctors] = useState([]);
   const [formData, setFormData] = useState({
@@ -14,7 +14,7 @@ function AppointmentForm() {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const response = await axios.get('http://localhost:10000/api/doctors');
+       const response = await axios.get(`${API_URL}/api/doctors`);
         setDoctors(response.data);
       } catch (error) {
         console.error('Error fetching doctors:', error);
@@ -26,7 +26,7 @@ function AppointmentForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/appointments', formData);
+    await axios.post(`${API_URL}/api/appointments`, formData);
       alert('Appointment booked successfully!');
       setFormData({
         patientName: '',
