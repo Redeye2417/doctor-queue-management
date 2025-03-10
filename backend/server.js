@@ -8,7 +8,7 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(cors({
-  origin: ['https://your-frontend-url.onrender.com', 'http://localhost:3000'],
+  origin: ['fantastic-mousse-5a9996.netlify.app', 'http://localhost:3000'],
   credentials: true
 }));
 app.use(express.json());
